@@ -16,7 +16,7 @@ Or install it yourself as:
 
     gem install crossbrowsertesting-gem
 
-## Example of Use
+## Examples of use
 
 If you are not using Rails, you'll need to require the gem:
 
@@ -24,7 +24,7 @@ If you are not using Rails, you'll need to require the gem:
 require 'CBT'
 ```
 
-### Creating Client
+### Create a client
 Creates a new client instance.
 
 ``` ruby
@@ -33,7 +33,7 @@ client = CBT.new('username', 'password')
 
 ###API
 
-### Taking a screenshot
+#### Take a screenshot
 Queues up a request for a screenshot
 
 ``` ruby
@@ -44,7 +44,7 @@ params = {
 request = client.take_screenshot(params)
 ```
 
-### Checking the status of a screenshot request
+#### Check the status of a screenshot request
 Returns true or false for completion status
 
 ``` ruby
@@ -53,7 +53,7 @@ version = request[:test][:version][:id]
 completed = client.status(test, version)
 ```
 
-### Load the full results of a screenshot request
+#### Load the full results of a screenshot request
 ``` ruby
 results = client.results(test, version)
 
@@ -62,8 +62,11 @@ results[:test][:version][:results].each do |screenshot|
 end
 ```
 
-####Getting available os and browsers
+#### Get available os and browsers
 Fetches all available browsers.
+
+Rather than using this list to construct a set of browsers for testing, I recommend saving a list of
+browser configurations through the main site and then referencing that list by name in your "take_screenshot" params.
 
 ``` ruby
 puts client.browsers 	#returns a hash

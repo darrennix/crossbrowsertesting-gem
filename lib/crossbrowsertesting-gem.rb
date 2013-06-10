@@ -22,7 +22,10 @@ class CBT
   
   def status(test, version)
     response = make_post_request("#{test}/version/#{version}/status")
-    response[:response][:complete] == 1 ? true : false
+    
+    puts "-----------status #{test} #{version}"
+    puts response
+    response[:complete] == 1 ? true : false
   end
 
   def results(test, version)
@@ -40,13 +43,21 @@ class CBT
     result = Net::HTTP.start(uri.hostname, uri.port) {|http|
       http.request(request)
     }
+    
     parser = Yajl::Parser.new(:symbolize_keys => true)
     begin
       output = parser.parse(result.body)[:response]
+      if output[:error] != 0 
+        raise GeneralError, output[:message]
+      end
     rescue Yajl::ParseError
-      output = result.body
+      raise GeneralError, result.body
     end
+    
     output
+  end
+
+  class GeneralError < StandardError
   end
   
 end #Client    
