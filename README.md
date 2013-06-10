@@ -48,8 +48,8 @@ request = client.take_screenshot(params)
 Returns true or false for completion status
 
 ``` ruby
-test = request[:response][:test][:id]
-version = request[:response][:test][:version][:id]
+test = request[:test][:id]
+version = request[:test][:version][:id]
 completed = client.status(test, version)
 ```
 
@@ -57,7 +57,7 @@ completed = client.status(test, version)
 ``` ruby
 results = client.results(test, version)
 
-results[:response][:test][:version][:results].each do |screenshot|
+results[:test][:version][:results].each do |screenshot|
     puts screenshot[:images][:fullpage]
 end
 ```
@@ -68,7 +68,7 @@ Fetches all available browsers.
 ``` ruby
 puts client.browsers 	#returns a hash
 
-:response=>{
+{
     :error=>0, 
     :message=>"", 
     :oss=>[

@@ -42,7 +42,7 @@ class CBT
     }
     parser = Yajl::Parser.new(:symbolize_keys => true)
     begin
-      output = parser.parse(result.body)
+      output = parser.parse(result.body)[:response]
     rescue Yajl::ParseError
       output = result.body
     end
