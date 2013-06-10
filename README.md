@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Example of Use
 
-If you are not using Rails, you'll need to require hte gem:
+If you are not using Rails, you'll need to require the gem:
 
 ``` ruby
 require 'CBT'
