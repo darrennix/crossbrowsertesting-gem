@@ -33,6 +33,35 @@ client = CBT.new('username', 'password')
 
 ###API
 
+### Taking a screenshot
+Queues up a request for a screenshot
+
+``` ruby
+params = {
+  :url => 'http://darrennix.com',
+  :delay => 5,
+}
+request = client.take_screenshot(params)
+```
+
+### Checking the status of a screenshot request
+Returns true or false for completion status
+
+``` ruby
+test = request[:response][:test][:id]
+version = request[:response][:test][:version][:id]
+completed = client.status(test, version)
+```
+
+### Load the full results of a screenshot request
+``` ruby
+results = client.results(test, version)
+
+results[:response][:test][:version][:results].each do |screenshot|
+    puts screenshot[:images][:fullpage]
+end
+```
+
 ####Getting available os and browsers
 Fetches all available browsers.
 
