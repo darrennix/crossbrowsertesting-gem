@@ -6,15 +6,11 @@ Gem::Specification.new do |s|
   s.version     = '0.1'
   s.authors     = ["Darren Nix"]
   s.email       = ["low@darrennix.com"]
-  s.homepage    = ""
-  s.summary     = %q{Ruby}
-  s.description = %q{Ruby library}
-
-  #s.rubyforge_project = "cbt"
+  s.homepage    = "http://darrennix.com"
+  s.summary     = "Ruby helper for crossbrowsertesting.com API"
+  s.description = "Ruby helper for crossbrowsertesting.com API"
 
   s.files         = `git ls-files`.split("\n")
-  #s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  #s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
   s.add_development_dependency "rake"
