@@ -22,9 +22,6 @@ class CBT
   
   def status(test, version)
     response = make_post_request("#{test}/version/#{version}/status")
-    
-    puts "-----------status #{test} #{version}"
-    puts response
     response[:complete] == 1 ? true : false
   end
 
